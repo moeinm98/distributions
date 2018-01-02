@@ -1,31 +1,30 @@
-\name{expgen}
-\alias{expgen.visual}
-\alias{expgen}
+\name{gegen}
+\alias{gegen.visual}
+\alias{gegen}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
-Exponential random variable
+Geometric random variable
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
-\code{expgen}, takes a parameter lambda as the parameter of exponential distribution and returns a random variable witch follows Exponential distribution.
+\code{gegen}, takes a parameter p as the probability of a single experience and returns a random variable witch follows Geometric distribution.
 
-  \code{expgen.visual}, takes a parameter lambda like \code{expgen} and plots an Exponantial distribution with taking 1000 data from \code{expgen}.
+  \code{expgen.visual}, takes a parameter p like \code{expgen} and plots a Geometric distribution with taking 1000 data from \code{gegen}.
 }
 \usage{
-expgen(lambda)
-expgen.visual(lambda)
+gegen(p)
+gegen.visual(p)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{lambda}{
+  \item{p}{
     \code{
-    Exponential distribution parameter.
+    success Probability of a single experiment.
     }
 }
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
+Geometric random variable is a random variable that describes the number failures before the first success, supported on the set { 0, 1, 2, 3, ... }.
 }
 \value{
 %%  ~Describe the value returned
@@ -50,8 +49,8 @@ expgen.visual(lambda)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-\code{expgen}(2)
-\code{expgen.visual}(2)
+gegen(0.5)
+gegen.visual(0.5)
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 %\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")

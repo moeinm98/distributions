@@ -9,7 +9,7 @@ Binomal random variable
 \description{
   \code{bigen}, takes two parameters p and n and repeats an experience with success probability p and repeat it n times. Then returns number of success.
 
-  \code{bigen.visual}, takes two parameters p and n like \code{bigen} and plots a bigen with taking 1000 data from \code{bigen}.
+  \code{bigen.visual}, takes two parameters p and n like \code{bigen} and plots a Binomial distribution with taking 1000 data from \code{bigen}.
 }
 \usage{
 bigen(p, n)
@@ -18,7 +18,7 @@ bigen.visual(p, n)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{p}{
-  \code{Success probability for a single experience}
+  \code{Success probability of a single experiment.}
 %%     ~~Describe \code{x} here~~
 }
   \item{n}{
