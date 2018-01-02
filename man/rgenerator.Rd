@@ -2,19 +2,35 @@
 \alias{rgenerator}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Pseudo-Random Generator
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+This function use linear congruential generator to generate random number between min and max.
+The seed of this method is set automatically with time of system.
+This method are using in C,C++ and java random generator.
+The constants which are used in this function are same as java random generator.
+This function has 3 parametes which are set as specific number but can be set with inputs.
 }
 \usage{
-rgenerator(x)
+rgenerator(min=0 , max=1 , number=1)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{
-%%     ~~Describe \code{x} here~~
-}
+  \item{min}{
+      \code{
+      minimum
+      }
+    }
+      \item{max}{
+      \code{
+      maximum
+      }
+    }
+    \item{number}{
+    \code{
+    number of random which must be generate
+    }
+  }
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
@@ -42,14 +58,11 @@ rgenerator(x)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (x)
-{
-  }
+rgenerator()
+or
+rgenerator(3,8)
+or
+rgenerator(3,8,10)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
