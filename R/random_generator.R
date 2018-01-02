@@ -101,12 +101,12 @@ expgen <- function(lambda)
   return(-log(cugen(), base = exp(1))/lambda)
 }
 
-expgen.visual <- function(p, n)
+expgen.visual <- function(lambda)
 {
   library(ggplot2)
   c <- c()
   for (i in 1:1000)
-    c[i] <- expgen(p)
+    c[i] <- expgen(lambda)
   qplot(c, geom = "density")
 }
 
