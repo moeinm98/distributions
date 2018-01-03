@@ -372,11 +372,11 @@ server = function(input, output, session) {
     if(!is.null(input$uniform_choose_file)){
       # browser()
       file_selected<-parseFilePaths(volumes, input$uniform_choose_file)
-      estimated <- dugen.visu(file_selected)
+      estimated <- dugen.estimator(as.character(file_selected$datapath))
       output$uniform_plot <- renderPlot(
         estimated
       )
-      #output$uniform_txt_file <- renderText(estimated)
+      output$uniform_txt_file <- renderText(as.character(file_selected$datapath))
 
     }
   })
@@ -405,7 +405,7 @@ server = function(input, output, session) {
     if(!is.null(input$bernouli_choose_file)){
       # browser()
       file_selected<-parseFilePaths(volumes, input$bernouli_choose_file)
-      estimated <- brgen.estimator(file_selected)
+      estimated <- brgen.estimator(as.character(file_selected$datapath))
       output$bernouli_plot <- renderPlot(
         estimated
       )
@@ -437,7 +437,7 @@ server = function(input, output, session) {
     if(!is.null(input$binomial_choose_file)){
       # browser()
       file_selected<-parseFilePaths(volumes, input$binomial_choose_file)
-      estimated <- bigen.estimator(file_selected)
+      estimated <- bigen.estimator(as.character(file_selected$datapath))
       output$binomial_plot <- renderPlot(
         estimated
       )
@@ -472,7 +472,7 @@ server = function(input, output, session) {
     if(!is.null(input$geometric_choose_file)){
       # browser()
       file_selected<-parseFilePaths(volumes, input$geometric_choose_file)
-      estimated <- gegen.estimator(file_selected)
+      estimated <- gegen.estimator(as.character(file_selected$datapath))
       output$geometric_plot <- renderPlot(
         estimated
       )
@@ -505,7 +505,7 @@ server = function(input, output, session) {
     if(!is.null(input$exponential_choose_file)){
       # browser()
       file_selected<-parseFilePaths(volumes, input$exponential_choose_file)
-      estimated <- expgen.estimator(file_selected)
+      estimated <- expgen.estimator(as.character(file_selected$datapath))
       output$exponential_plot <- renderPlot(
         estimated
       )
@@ -538,7 +538,7 @@ server = function(input, output, session) {
     if(!is.null(input$gamma_choose_file)){
       # browser()
       file_selected<-parseFilePaths(volumes, input$gamma_choose_file)
-      estimated <- gagen.estimator(file_selected)
+      estimated <- gagen.estimator(as.character(file_selected$datapath))
       output$gamma_plot <- renderPlot(
         estimated
       )    }
@@ -568,7 +568,7 @@ server = function(input, output, session) {
     if(!is.null(input$poisson_choose_file)){
       # browser()
       file_selected<-parseFilePaths(volumes, input$poisson_choose_file)
-      estimated <- pogen.estimator(file_selected)
+      estimated <- pogen.estimator(as.character(file_selected$datapath))
       output$poisson_plot <- renderPlot(
         estimated
       )    }
@@ -598,7 +598,7 @@ server = function(input, output, session) {
     if(!is.null(input$normal_choose_file)){
       # browser()
       file_selected<-parseFilePaths(volumes, input$normal_choose_file)
-      estimated <- nogen.estimator(file_selected)
+      estimated <- nogen.estimator(as.character(file_selected$datapath))
       output$normal_plot <- renderPlot(
         estimated
       )    }
