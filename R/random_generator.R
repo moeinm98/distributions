@@ -73,7 +73,7 @@ bigen.visual <- function(p, n)
   c <- c()
   for (i in 1:1000)
     c[i] <- bigen(p, n)
-  qplot(c, geom = "density")
+  qplot(c, geom = "bar") + theme_classic()
 }
 
 expgen <- function(lambda)
@@ -86,7 +86,7 @@ expgen.visual <- function(lambda)
   c <- c()
   for (i in 1:1000)
     c[i] <- expgen(lambda)
-  qplot(c, geom = "density")
+  qplot(c, geom = "density") + theme_classic()
 }
 
 gegen <- function(p)
@@ -103,7 +103,7 @@ gegen.visual <- function(p)
   c <- c()
   for (i in 1:1000)
     c[i] <- gegen(p)
-  qplot(c, geom = "density")
+  qplot(c, geom = "bar") + theme_classic()
 }
 
 gagen = function(k,lambda){
