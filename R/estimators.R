@@ -27,3 +27,20 @@ pogen.estimator <- function(file){
   n <- ncol(results)*nrow(results)
   return(sum/n)
 }
+
+
+gagen.estimator <- function(file){
+  results <- read.table(file)
+  sum <- sum(results)
+  n <- ncol(results)*nrow(results)
+  return(c(1,n/sum))
+}
+
+normal.estimator <- function (file){
+  results <- read.table(file)
+  sum <- sum(results)
+  n <- ncol(results)*nrow(results)
+  mean <- sum/n
+  variance <- (sum((results - mean)^2) )/n
+  return(c(mean,variance))
+}
