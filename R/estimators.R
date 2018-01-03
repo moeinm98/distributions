@@ -41,25 +41,71 @@ gegen.estimator <- function(file)
 }
 
 pogen.estimator <- function(file){
-  results <- read.table(file)
+  library(ggplot2)
+
+  results <- read.table(file, sep =" ")
   sum <- sum(results)
   n <- ncol(results)*nrow(results)
-  return(sum/n)
+
+  t = 1
+  lambda = sum/n
+
+  c <- c()
+  for (i in 1:10000)
+    c[i] <- pogen(t, lambda)
+
+
+  p1<-qplot(as.vector( as.matrix(results)))
+  p2<-qplot(as.data.frame(c))
+  ggarrange(p1,p2, nrow =2)
+
+  #return(c(t,lambda))
 }
 
 
 gagen.estimator <- function(file){
+  library(ggplot2)
+
+  k = 1
   results <- read.table(file)
   sum <- sum(results)
   n <- ncol(results)*nrow(results)
-  return(c(1,n/sum))
+  lambda = n/sum
+
+  c <- c()
+  for (i in 1:1000)
+    c[i] <- gagen(k, lambda)
+
+
+  p1<-qplot(as.vector(as.matrix(results)))
+  p2<-qplot(as.data.frame(c))
+  ggarrange(p1,p2, nrow =2)
+  #return(c(1,lambda))
 }
 
-normal.estimator <- function (file){
+nogen.estimator <- function (file){
   results <- read.table(file)
   sum <- sum(results)
   n <- ncol(results)*nrow(results)
   mean <- sum/n
   variance <- (sum((results - mean)^2) )/n
-  return(c(mean,variance))
+
+
+  c <- c()
+  for (i in 1:1000)
+    c[i] <- nogen(mean, variance)
+
+  p1<-qplot(as.vector(as.matrix(results)))
+  p2<-qplot(as.data.frame(c))
+  ggarrange(p1,p2, nrow =2)
+
+  #return(c(mean,variance))
+}
+
+
+read <- function(file){
+  library(ggplot2)
+  results <- read.table(file,sep = " ")
+  results
+  qplot( as.vector( as.matrix(results)) ) + geom_histogram(binwidth = 0.1)
 }

@@ -23,7 +23,7 @@ dugen.visual <- function(min , max){
   for (i in 1:10000){
     result=c(result,dugen(min, max))
   }
-  qplot(result, geom = "bar")+ theme_classic()
+  qplot(result, geom = "density")
 }
 
 cugen= function(){
@@ -35,7 +35,7 @@ cugen.visual <- function(){
   for (i in 1:10000){
     result=c(result,cugen())
   }
-  qplot(result, geom = "bar") + theme_classic()
+  qplot(result, geom = "density") +theme_dark()
 }
 
 brgen=function(p){
@@ -53,7 +53,7 @@ brgen.visual <- function(p){
   for (i in 1:10000){
     result=c(result,brgen(p))
   }
-  qplot(result, geom = "bar")+ theme_classic()
+  qplot(result, geom = "density")
 }
 
 bigen <- function(p, n)
@@ -120,7 +120,8 @@ gagen.visual <- function(k, lambda)
   c <- c()
   for (i in 1:1000)
     c[i] <- gagen(k, lambda)
-  qplot(c, geom = "density")
+  qplot(c, geom = "density") +labs(title = "Gamma", x= "time",y ="density")+ theme(plot.background = element_rect(fill = "linen",colour = "red")) +theme(panel.background = element_rect(fill = "linen",colour = "black"))
+
 }
 
 
@@ -141,7 +142,7 @@ pogen.visual <- function(t, lambda)
   c <- c()
   for (i in 1:10000)
     c[i] <- pogen(t, lambda)
-  qplot(c, geom = "density")
+  qplot(c, geom = "density",) +labs(title = "Poisson", x= "number of occurance",y ="density")+ theme(plot.background = element_rect(fill = "linen",colour = "red")) +theme(panel.background = element_rect(fill = "linen",colour = "black"))
 }
 
 
@@ -159,5 +160,7 @@ nogen.visual <- function(u, s)
   c <- c()
   for (i in 1:1000)
     c[i] <- nogen(u, s)
-  qplot(c, geom = "density")
+  qplot(c, geom = "line") +labs(title = "Normal", x= "number of occurance",y ="density")+ theme(plot.background = element_rect(fill = "linen",colour = "red")) +theme(panel.background = element_rect(fill = "linen",colour = "black"))
+
 }
+
