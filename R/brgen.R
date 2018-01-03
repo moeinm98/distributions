@@ -1,6 +1,6 @@
 brgen=function(p){
   s=cugen()
-  if(s>p){
+  if(s<p){
     return(1)
   }
   else{

@@ -4,7 +4,8 @@ if("shiny" %in% rownames(installed.packages()) == FALSE)
 if("shinyFiles" %in% rownames(installed.packages()) == FALSE)
 {install.packages("shinyFiles")}
 
-library("ggpubr")
+#install.packages("ggpubr")
+#library("ggpubr")
 library("shinythemes")
 library("shinyFiles")
 
@@ -16,6 +17,7 @@ source("expgen.R")
 source("gagen.R")
 source("gegen.R")
 source("nogen.R")
+source("pogen.R")
 source("rgenerator.R")
 source("estimators.R")
 
@@ -56,7 +58,7 @@ ui <- navbarPage(
                shinyFilesButton("uniform_choose_file", "Choose a file" ,
                                 title = "Please select a file:", multiple = FALSE,
                                 buttonType = "default", class = "btn-primary"
-                                ),
+               ),
 
                textOutput("uniform_txt_file")
              ),
@@ -261,7 +263,7 @@ ui <- navbarPage(
                helpText("Tap 'Generate' button for generating a Poisson Random Number'"),
 
                actionButton("poisson_rand_gen_btn", "Generate", class = "btn-primary"),
-               tags$p("Random generated number: ", textOutput("poisson_rand_num")),
+               textOutput("poisson_rand_num"),
 
 
 
@@ -299,7 +301,7 @@ ui <- navbarPage(
                helpText("Tap 'Generate' button for generating a Normal Random Number'"),
 
                actionButton("normal_rand_gen_btn", "Generate", class = "btn-primary"),
-               tags$p("Random generated number: ", textOutput("normal_rand_num")),
+               textOutput("normal_rand_num"),
 
 
 
@@ -358,7 +360,7 @@ server = function(input, output, session) {
   uplot <- eventReactive(input$uniform_plot_btn,{
     dugen.visual(input$uniform_min, input$uniform_max)
 
-     })
+  })
   output$uniform_plot <- renderPlot(
     uplot()
   )
@@ -370,10 +372,11 @@ server = function(input, output, session) {
     if(!is.null(input$uniform_choose_file)){
       # browser()
       file_selected<-parseFilePaths(volumes, input$uniform_choose_file)
-      estimated <- dugen.estimator(file_selected)
-      updateNumericInput(session, "uniform_min", value = estimated[1])
-      updateNumericInput(session, "uniform_max",value = estimated[2])
-      output$uniform_txt_file <- renderText(estimated)
+      estimated <- dugen.visu(file_selected)
+      output$uniform_plot <- renderPlot(
+        estimated
+      )
+      #output$uniform_txt_file <- renderText(estimated)
 
     }
   })
@@ -402,7 +405,10 @@ server = function(input, output, session) {
     if(!is.null(input$bernouli_choose_file)){
       # browser()
       file_selected<-parseFilePaths(volumes, input$bernouli_choose_file)
-      output$bernouli_txt_file <- renderText(as.character(file_selected$datapath))
+      estimated <- brgen.estimator(file_selected)
+      output$bernouli_plot <- renderPlot(
+        estimated
+      )
     }
   })
 
@@ -431,7 +437,10 @@ server = function(input, output, session) {
     if(!is.null(input$binomial_choose_file)){
       # browser()
       file_selected<-parseFilePaths(volumes, input$binomial_choose_file)
-      output$binomial_txt_file <- renderText(as.character(file_selected$datapath))
+      estimated <- bigen.estimator(file_selected)
+      output$binomial_plot <- renderPlot(
+        estimated
+      )
     }
   })
 
@@ -463,7 +472,10 @@ server = function(input, output, session) {
     if(!is.null(input$geometric_choose_file)){
       # browser()
       file_selected<-parseFilePaths(volumes, input$geometric_choose_file)
-      output$geometric_txt_file <- renderText(as.character(file_selected$datapath))
+      estimated <- gegen.estimator(file_selected)
+      output$geometric_plot <- renderPlot(
+        estimated
+      )
     }
   })
 
@@ -493,7 +505,10 @@ server = function(input, output, session) {
     if(!is.null(input$exponential_choose_file)){
       # browser()
       file_selected<-parseFilePaths(volumes, input$exponential_choose_file)
-      output$exponential_txt_file <- renderText(as.character(file_selected$datapath))
+      estimated <- expgen.estimator(file_selected)
+      output$exponential_plot <- renderPlot(
+        estimated
+      )
     }
   })
 
@@ -523,8 +538,10 @@ server = function(input, output, session) {
     if(!is.null(input$gamma_choose_file)){
       # browser()
       file_selected<-parseFilePaths(volumes, input$gamma_choose_file)
-      output$gamma_txt_file <- renderText(as.character(file_selected$datapath))
-    }
+      estimated <- gagen.estimator(file_selected)
+      output$gamma_plot <- renderPlot(
+        estimated
+      )    }
   })
 
 
@@ -551,8 +568,10 @@ server = function(input, output, session) {
     if(!is.null(input$poisson_choose_file)){
       # browser()
       file_selected<-parseFilePaths(volumes, input$poisson_choose_file)
-      output$poisson_txt_file <- renderText(as.character(file_selected$datapath))
-    }
+      estimated <- pogen.estimator(file_selected)
+      output$poisson_plot <- renderPlot(
+        estimated
+      )    }
   })
 
 
@@ -579,8 +598,10 @@ server = function(input, output, session) {
     if(!is.null(input$normal_choose_file)){
       # browser()
       file_selected<-parseFilePaths(volumes, input$normal_choose_file)
-      output$normal_txt_file <- renderText(as.character(file_selected$datapath))
-    }
+      estimated <- nogen.estimator(file_selected)
+      output$normal_plot <- renderPlot(
+        estimated
+      )    }
   })
 
 }
