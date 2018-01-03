@@ -71,7 +71,7 @@ bigen.visual <- function(p, n)
 {
   library(ggplot2)
   c <- c()
-  for (i in 1:1000)
+  for (i in 1:10000)
     c[i] <- bigen(p, n)
   qplot(c, geom = "bar") + theme_classic()
 }

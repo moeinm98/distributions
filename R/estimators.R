@@ -4,6 +4,8 @@ dugen.estimator <- function(file)
   mymax=max(f)
   mymin=min(f)
   return(c(mymin, mymax))
+
+
 }
 
 cugen.estimator <- function(file)
@@ -25,19 +27,55 @@ bigen.estimator <- function(file)
   f <- read.table(file)
   n <- max(f)
   p <- sum(f)/(n*nrow(f)*ncol(f))
-  return(c(n, p))
+
+  print(n)
+  print(p)
+
+  c <- c()
+  for (i in 1:1000)
+    c[i] <- bigen(p, n)
+
+
+  p1<-qplot(as.vector(as.matrix(f)))
+  p2<-qplot(as.data.frame(c))
+  ggarrange(p1,p2, nrow =2)
+
+  #return(c(n, p))
 }
 
 expgen.estimator <- function(file)
 {
   f <- read.table(file)
-  return(mean(colMeans(f)))
+  #return(mean(colMeans(f)))
+
+  lambda = mean(colMeans(f))
+  lambda
+  c <- c()
+  for (i in 1:1000)
+    c[i] <- expgen(lambda)
+
+
+  p1<-qplot(as.vector(as.matrix(f)))
+  p2<-qplot(as.data.frame(c))
+  ggarrange(p1,p2, nrow =2)
 }
 
 gegen.estimator <- function(file)
 {
+  library(ggplot2)
+
   f <- read.table(file)
-  return(1/mean(colMeans(f)))
+  p = 1/mean(colMeans(f))
+  c <- c()
+  for (i in 1:1000)
+    c[i] <- gegen(p)
+
+
+  p1<-qplot(as.vector(as.matrix(f)))
+  p2<-qplot(as.data.frame(c))
+  ggarrange(p1,p2, nrow =2)
+  #return(1/mean(colMeans(f)))
+
 }
 
 pogen.estimator <- function(file){
