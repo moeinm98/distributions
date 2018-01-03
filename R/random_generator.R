@@ -1,17 +1,3 @@
-##step 1
-lrgenerator <- function(min , max , number){
-  a=25214903917;
-  m=2^48;
-  c=11;
-  x_0=as.numeric(Sys.time())*1000;
-  s<-c()
-  for(i in 1:number){
-    x_0=((a*x_0)+c)%% m
-    s<-c(s,min+(max-min)*x_0/m)
-  }
-  return(s)
-}
-##step 1
 rgenerator <- function(min=0 , max=1 , number=1){
   a=25214903917;
   m=2^48;
@@ -28,17 +14,9 @@ rgenerator <- function(min=0 , max=1 , number=1){
   return(s)
 }
 
-
-##step 2
 dugen = function(min , max){
   return(rgenerator(min , max , 1))
 }
-##step 3
-cugen= function(){
-  result=c(rgenerator(0,1,1))
-  return(result)
-}
-##step 10
 dugen.visual <- function(min , max){
   library(ggplot2)
   result=c()
@@ -46,6 +24,11 @@ dugen.visual <- function(min , max){
     result=c(result,dugen(min, max))
   }
   qplot(result, geom = "density")
+}
+
+cugen= function(){
+  result=c(rgenerator(0,1,1))
+  return(result)
 }
 cugen.visual <- function(){
   result=c()
@@ -55,7 +38,6 @@ cugen.visual <- function(){
   qplot(result, geom = "density") +theme_dark()
 }
 
-#step3
 brgen=function(p){
   s=cugen()
   if(s>p){
@@ -65,7 +47,6 @@ brgen=function(p){
     return(0)
   }
 }
-#step 10
 brgen.visual <- function(p){
   library(ggplot2)
   result=c()
@@ -86,7 +67,6 @@ bigen <- function(p, n)
   }
     return(k)
 }
-
 bigen.visual <- function(p, n)
 {
   library(ggplot2)
@@ -100,7 +80,6 @@ expgen <- function(lambda)
 {
   return(-log(cugen(), base = exp(1))/lambda)
 }
-
 expgen.visual <- function(lambda)
 {
   library(ggplot2)
@@ -118,7 +97,6 @@ gegen <- function(p)
 
     return(k)
 }
-
 gegen.visual <- function(p)
 {
   library(ggplot2)
