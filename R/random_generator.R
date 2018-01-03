@@ -23,7 +23,7 @@ dugen.visual <- function(min , max){
   for (i in 1:10000){
     result=c(result,dugen(min, max))
   }
-  qplot(result, geom = "density")+ theme_classic()
+  qplot(result, geom = "bar")+ theme_classic()
 }
 
 cugen= function(){
@@ -35,7 +35,7 @@ cugen.visual <- function(){
   for (i in 1:10000){
     result=c(result,cugen())
   }
-  qplot(result, geom = "density") + theme_classic()
+  qplot(result, geom = "bar") + theme_classic()
 }
 
 brgen=function(p){
@@ -53,7 +53,7 @@ brgen.visual <- function(p){
   for (i in 1:10000){
     result=c(result,brgen(p))
   }
-  qplot(result, geom = "density")+ theme_classic()
+  qplot(result, geom = "bar")+ theme_classic()
 }
 
 bigen <- function(p, n)
