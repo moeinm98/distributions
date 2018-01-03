@@ -17,3 +17,13 @@ gegen.estimator <- function(file)
   f <- read.table(file)
   return(1/mean(colMeans(f)))
 }
+
+
+
+
+pogen.estimator <- function(file){
+  results <- read.table(file)
+  sum <- sum(results)
+  n <- ncol(results)*nrow(results)
+  return(sum/n)
+}
