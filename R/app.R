@@ -5,7 +5,8 @@ if("shinyFiles" %in% rownames(installed.packages()) == FALSE)
 {install.packages("shinyFiles")}
 
 #install.packages("ggpubr")
-#library("ggpubr")
+library("ggpubr")
+library("ggplot2")
 library("shinythemes")
 library("shinyFiles")
 
