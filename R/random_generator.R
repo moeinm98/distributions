@@ -23,7 +23,7 @@ dugen.visual <- function(min , max){
   for (i in 1:10000){
     result=c(result,dugen(min, max))
   }
-  qplot(result, geom = "density")
+  qplot(result,fill=..count.., geom = "bar")+scale_fill_gradient(low="blue", high="red") + theme_classic()+geom_histogram(binwidth = 0.1)
 }
 
 cugen= function(){
@@ -35,7 +35,7 @@ cugen.visual <- function(){
   for (i in 1:10000){
     result=c(result,cugen())
   }
-  qplot(result, geom = "density") +theme_dark()
+  qplot(result,fill=..count.., geom = "bar") + theme_classic()+geom_histogram(binwidth = 0.01)+scale_fill_gradient(low="blue", high="red")
 }
 
 brgen=function(p){
@@ -53,19 +53,19 @@ brgen.visual <- function(p){
   for (i in 1:10000){
     result=c(result,brgen(p))
   }
-  qplot(result, geom = "density")
+  qplot(result, geom = "bar",fill=..count..)+ theme_classic()+geom_histogram(binwidth = 0.01)+scale_fill_gradient(low="blue", high="red")
 }
 
 bigen <- function(p, n)
 {
   k = 0
   numbers <-
-  for (i in 1:n)
-  {
-    if (brgen(p) == 1)
+    for (i in 1:n)
+    {
+      if (brgen(p) == 1)
       {k <- k + 1}
-  }
-    return(k)
+    }
+  return(k)
 }
 bigen.visual <- function(p, n)
 {
@@ -73,7 +73,7 @@ bigen.visual <- function(p, n)
   c <- c()
   for (i in 1:10000)
     c[i] <- bigen(p, n)
-  qplot(c, geom = "bar") + theme_classic()
+  qplot(c, geom = "bar",fill=..count..) + theme_classic()+geom_histogram(binwidth = 0.01)+scale_fill_gradient(low="blue", high="red")
 }
 
 expgen <- function(lambda)
@@ -86,16 +86,16 @@ expgen.visual <- function(lambda)
   c <- c()
   for (i in 1:1000)
     c[i] <- expgen(lambda)
-  qplot(c, geom = "density") + theme_classic()
+  qplot(c, geom = "histogram",fill=..count..) + theme_classic()+scale_fill_gradient(low="blue", high="red")
 }
 
 gegen <- function(p)
 {
   k = 0
-    while (brgen(p) != 1)
-        k <- k + 1
+  while (brgen(p) != 1)
+    k <- k + 1
 
-    return(k)
+  return(k)
 }
 gegen.visual <- function(p)
 {
@@ -103,7 +103,7 @@ gegen.visual <- function(p)
   c <- c()
   for (i in 1:1000)
     c[i] <- gegen(p)
-  qplot(c, geom = "bar") + theme_classic()
+  qplot(c, geom = "bar",fill=..count..) + theme_classic()+geom_histogram(binwidth = 0.01)+scale_fill_gradient(low="blue", high="red")
 }
 
 gagen = function(k,lambda){
@@ -116,14 +116,15 @@ gagen = function(k,lambda){
 }
 gagen.visual <- function(k, lambda)
 {
+  library(ggpubr)
   library(ggplot2)
   c <- c()
   for (i in 1:1000)
     c[i] <- gagen(k, lambda)
-  qplot(c, geom = "density") +labs(title = "Gamma", x= "time",y ="density")+ theme(plot.background = element_rect(fill = "linen",colour = "red")) +theme(panel.background = element_rect(fill = "linen",colour = "black"))
-
+  q1=qplot(c,fill=..count..,geom="histogram")+ theme_classic()+scale_fill_gradient(low="blue", high="red")
+  q2=qplot(c,geom="density")+ theme_classic()
+  ggarrange(q1,q2,nrow = 2)
 }
-
 
 pogen = function(t,lambda){
   i = 0.0
@@ -142,7 +143,7 @@ pogen.visual <- function(t, lambda)
   c <- c()
   for (i in 1:10000)
     c[i] <- pogen(t, lambda)
-  qplot(c, geom = "density",) +labs(title = "Poisson", x= "number of occurance",y ="density")+ theme(plot.background = element_rect(fill = "linen",colour = "red")) +theme(panel.background = element_rect(fill = "linen",colour = "black"))
+  qplot(c,fill=..count..,geom="histogram")+ theme_classic()+scale_fill_gradient(low="blue", high="red")
 }
 
 
@@ -153,14 +154,14 @@ nogen = function(u,s){
   result = result + (u-10*dev)
   return (result)
 }
-
 nogen.visual <- function(u, s)
 {
   library(ggplot2)
   c <- c()
-  for (i in 1:1000)
+  for (i in 1:10000)
     c[i] <- nogen(u, s)
-  qplot(c, geom = "line") +labs(title = "Normal", x= "number of occurance",y ="density")+ theme(plot.background = element_rect(fill = "linen",colour = "red")) +theme(panel.background = element_rect(fill = "linen",colour = "black"))
-
+  q1=qplot(c,fill=..count..,geom="histogram")+ theme_classic()+scale_fill_gradient(low="blue", high="red")
+  q2=qplot(c,geom="density")+ theme_classic()
+  ggarrange(q1,q2,nrow = 2)
 }
 
