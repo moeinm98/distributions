@@ -3,7 +3,7 @@
 \alias{gegen}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Geometric random variable
+Geometric RV
 }
 \description{
 \code{gegen}, takes a parameter p as the probability of a single experience and returns a random variable witch follows Geometric distribution.
@@ -24,7 +24,31 @@ gegen.visual(p)
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
-Geometric random variable is a random variable that describes the number failures before the first success, supported on the set { 0, 1, 2, 3, ... }.
+%Geometric random variable is a random variable that describes the number failures before the first success, supported on the set { 0, 1, 2, 3, ... }.
+In probability theory and statistics, the geometric distribution is either of two discrete probability distributions:
+
+    The probability distribution of the number X of Bernoulli trials needed to get one success, supported on the set { 1, 2, 3, ...}
+    The probability distribution of the number Y = X − 1 of failures before the first success, supported on the set { 0, 1, 2, 3, ... }
+
+Which of these one calls "the" geometric distribution is a matter of convention and convenience.
+
+These two different geometric distributions should not be confused with each other. Often, the name shifted geometric distribution is adopted for the former one (distribution of the number X); however, to avoid ambiguity, it is considered wise to indicate which is intended, by mentioning the support explicitly.
+
+The geometric distribution gives the probability that the first occurrence of success requires k independent trials, each with success probability p. If the probability of success on each trial is p, then the probability that the kth trial (out of k trials) is the first success is
+
+    Pr ( X = k ) = ( 1 − p ) k − 1 p {\displaystyle \Pr(X=k)=(1-p)^{k-1}\,p\,} \Pr(X=k)=(1-p)^{k-1}\,p\,
+
+for k = 1, 2, 3, ....
+
+The above form of the geometric distribution is used for modeling the number of trials up to and including the first success. By contrast, the following form of the geometric distribution is used for modeling the number of failures until the first success:
+
+    Pr ( Y = k ) = ( 1 − p ) k p {\displaystyle \Pr(Y=k)=(1-p)^{k}\,p\,} \Pr(Y=k)=(1-p)^{k}\,p\,
+
+for k = 0, 1, 2, 3, ....
+
+In either case, the sequence of probabilities is a geometric sequence.
+
+For example, suppose an ordinary die is thrown repeatedly until the first time a "1" appears. The probability distribution of the number of times it is thrown is supported on the infinite set { 1, 2, 3, ... } and is a geometric distribution with p = 1/6.
 }
 \value{
 %%  ~Describe the value returned

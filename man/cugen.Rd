@@ -7,6 +7,7 @@ Uniform Numbers
 \description{
 Cugen function use "dugen" to create uniform random number between 0 and 1
 }
+
 \usage{
 cugen()
 }
