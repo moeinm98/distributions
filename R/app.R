@@ -26,7 +26,7 @@ source("estimators.R")
 
 
 ui <- navbarPage(
-  theme = shinytheme("cerulean"),
+  theme = shinytheme("united"),
   "Distributions",
 
   tabPanel("Uniform",

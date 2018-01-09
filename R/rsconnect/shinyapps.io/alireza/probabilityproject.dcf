@@ -1,0 +1,12 @@
+name: probabilityproject
+title: ProbabilityProject
+username:
+account: alireza
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 254513
+bundleId: 1165427
+url: https://alireza.shinyapps.io/probabilityproject/
+when: 1515322498.97407
+asMultiple: FALSE
+asStatic: FALSE
