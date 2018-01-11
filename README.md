@@ -12,10 +12,6 @@ Generates numbers following Binomial,Gamma,Exponential,Geometric,Normal and Pois
 * [R](http://www.r-project.org) - The web framework used
 * [Shiny](http://shiny.rstudio.com/) - Dependency Management
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct.
-
 ## Authors
 
 * **Amin Isaie**  - [AwesDea](https://github.com/AwesDea)
