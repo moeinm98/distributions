@@ -9,8 +9,8 @@ Generates numbers following Binomial,Gamma,Exponential,Geometric,Normal and Pois
 
 ## Built With
 
-* [R](http://www.r-project.org) - The web framework used
-* [Shiny](http://shiny.rstudio.com/) - Dependency Management
+* [R](http://www.r-project.org) 
+* [Shiny](http://shiny.rstudio.com/) 
 
 ## Authors
 
