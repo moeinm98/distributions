@@ -6,7 +6,7 @@ Random Variable Distrubiotions for R
 
 Generates numbers following Binomial,Gamma,Exponential,Geometric,Normal and Poisson random variables. And can visualize results of Random variables with the given arguments.
 
-# Details and features
+### Details and features
 * Returns a number from a specified Random variable with the given arguments.
 * Draws a plot of a specified Random Variable with the given arguments.
 * Easy to use and user-friendly GUI.
