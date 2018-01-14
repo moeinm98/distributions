@@ -1,10 +1,10 @@
-# Project Title
+[![Build Status](https://travis-ci.org/rstudio/leaflet.svg?branch=master)](https://travis-ci.org/rstudio/leaflet)
 
-Random Variable Distrubiotions for R
+# Random Variable Distrubiotions In R
 
 ## Description
 
-Generates numbers following Binomial,Gamma,Exponential,Geometric,Normal and Poisson random variables. And can visualize results of Random variables with the given arguments.
+Generates numbers following Binomial, Gamma, Exponential, Geometric, Normal and Poisson random variables. And can visualize results of Random variables with the given arguments.
 
 ### Details and features
 * Returns a number from a specified Random variable with the given arguments.
