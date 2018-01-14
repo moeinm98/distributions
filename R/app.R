@@ -1,10 +1,12 @@
 if("shiny" %in% rownames(installed.packages()) == FALSE)
 {install.packages("shiny")}
-
 if("shinyFiles" %in% rownames(installed.packages()) == FALSE)
 {install.packages("shinyFiles")}
+if("ggpubr" %in% rownames(installed.packages()) == FALSE)
+{install.packages("ggpubr")}
+if("ggplot2" %in% rownames(installed.packages()) == FALSE)
+{install.packages("ggplot2")}
 
-#install.packages("ggpubr")
 library("ggpubr")
 library("ggplot2")
 library("shinythemes")
@@ -23,14 +25,11 @@ source("rgenerator.R")
 source("estimators.R")
 
 
-
-
 ui <- navbarPage(
-  theme = shinytheme("united"),
   "Distributions",
 
   tabPanel("Uniform",
-
+           shinythemes::themeSelector(), 
 
            #Uniform - dugen TAB
 
@@ -187,7 +186,7 @@ ui <- navbarPage(
              sidebarPanel(
                helpText("Exponential distribution is a popular distribution which is used to model waiting times and memoryless processes."),
                helpText("Select Exponential Distribution parameter:"),
-               numericInput("exponential_input", "Exponential parameter(λ) :", value = 0.1, step = 0.1, min = 0.1),
+               numericInput("exponential_input", "Exponential parameter(??) :", value = 0.1, step = 0.1, min = 0.1),
                helpText("Tap 'Generate' button for generating a Exponential Random Number'"),
 
                actionButton("exponential_rand_gen_btn", "Generate Random", class = "btn-primary"),
@@ -222,7 +221,7 @@ ui <- navbarPage(
            sidebarLayout(
              sidebarPanel(
                helpText("Summation of k i.i.d exponential random variables leads to a gamma distributed random variable."),
-               helpText("Select Exponential Distribution parameter (λ) and k:"),
+               helpText("Select Exponential Distribution parameter (??) and k:"),
                numericInput("gamma_input", "Gamma parameter :", value = 0.1, step = 0.1, min = 0.1),
                numericInput("gamma_k", "k", value = 1, min = 1),
                helpText("Tap 'Generate' button for generating a Gamma Random Number'"),
@@ -258,7 +257,7 @@ ui <- navbarPage(
              sidebarPanel(
                helpText("If an exponentially distributed variable is modeled as the waiting time before an arrival, the Poisson distributed variable can be modeled as the number of arrivals during a period of time of length t ."),
                helpText("Select Poisson Distribution lambda and t:"),
-               numericInput("poisson_input", "Poisson parameter (λ) :", value = 0.1, step = 0.1, min = 0.1),
+               numericInput("poisson_input", "Poisson parameter (??) :", value = 0.1, step = 0.1, min = 0.1),
                numericInput("poisson_t", "time (t)", value = 0.1, min = 0.1, step = 0.1),
                tags$h5("Random number Generator:"),
                helpText("Tap 'Generate' button for generating a Poisson Random Number'"),
@@ -294,7 +293,7 @@ ui <- navbarPage(
 
            sidebarLayout(
              sidebarPanel(
-               helpText("The Poisson (λ) distribution can be considered as an approximation of N(λ,λ)"),
+               helpText("The Poisson (??) distribution can be considered as an approximation of N(??,??)"),
                helpText("Select Normal Distribution mean (u) and variance (s):"),
                numericInput("normal_u", "Normal parameter mean (u) :", value = 0.1, step = 0.1, min = 0),
                numericInput("normal_s", "Normal parameter variance (s)", value = 0.1, step = 0.1, min = 0),
@@ -606,5 +605,5 @@ server = function(input, output, session) {
   })
 
 }
-#λ
+#??
 shinyApp(ui = ui, server = server)
