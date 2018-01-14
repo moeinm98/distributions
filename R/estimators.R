@@ -76,11 +76,14 @@ brgen.estimator <- function(file)
 bigen.estimator <- function(file)
 {
   f <- read.table(file)
+  f <- as.integer(f[,1])
   n <- max(f)
-  p <- sum(f)/(n*nrow(f)*ncol(f))
-
+#  p <- sum(f)/(n*nrow(f)*ncol(f))
+  p <- 1-var(f)/mean(f)
+  n <- max(n, as.integer(mean(f)/p))
+  
   c <- c()
-  for (i in 1:1000)
+  for (i in 1:10000)
     c[i] <- bigen(p, n)
 
 
