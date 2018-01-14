@@ -20,7 +20,7 @@ Generates numbers following Binomial, Gamma, Exponential, Geometric, Normal and 
 
 ## Website
 
-* [Distributions](http://alireza.shinyapps.io/probabilityproject/)
+* [Distributions](http://alireza.shinyapps.io/probabilityproject2/)
 
 ## Authors
 
