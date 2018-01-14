@@ -6,6 +6,8 @@ if("ggpubr" %in% rownames(installed.packages()) == FALSE)
 {install.packages("ggpubr")}
 if("ggplot2" %in% rownames(installed.packages()) == FALSE)
 {install.packages("ggplot2")}
+if("magrittr" %in% rownames(installed.packages()) == FALSE)
+{install.packages("magrittr")}
 
 library("ggpubr")
 library("ggplot2")
@@ -26,10 +28,13 @@ source("estimators.R")
 
 
 ui <- navbarPage(
+  theme = shinytheme("superhero"),
+  
   "Distributions",
-
+  
   tabPanel("Uniform",
            shinythemes::themeSelector(), 
+           
 
            #Uniform - dugen TAB
 
@@ -221,7 +226,7 @@ ui <- navbarPage(
            sidebarLayout(
              sidebarPanel(
                helpText("Summation of k i.i.d exponential random variables leads to a gamma distributed random variable."),
-               helpText("Select Exponential Distribution parameter (??) and k:"),
+               helpText("Select Exponential Distribution parameter λ and k:"),
                numericInput("gamma_input", "Gamma parameter :", value = 0.1, step = 0.1, min = 0.1),
                numericInput("gamma_k", "k", value = 1, min = 1),
                helpText("Tap 'Generate' button for generating a Gamma Random Number'"),
@@ -257,7 +262,7 @@ ui <- navbarPage(
              sidebarPanel(
                helpText("If an exponentially distributed variable is modeled as the waiting time before an arrival, the Poisson distributed variable can be modeled as the number of arrivals during a period of time of length t ."),
                helpText("Select Poisson Distribution lambda and t:"),
-               numericInput("poisson_input", "Poisson parameter (??) :", value = 0.1, step = 0.1, min = 0.1),
+               numericInput("poisson_input", "Poisson parameter λ :", value = 0.1, step = 0.1, min = 0.1),
                numericInput("poisson_t", "time (t)", value = 0.1, min = 0.1, step = 0.1),
                tags$h5("Random number Generator:"),
                helpText("Tap 'Generate' button for generating a Poisson Random Number'"),
@@ -293,7 +298,7 @@ ui <- navbarPage(
 
            sidebarLayout(
              sidebarPanel(
-               helpText("The Poisson (??) distribution can be considered as an approximation of N(??,??)"),
+               helpText("The Poisson λ distribution can be considered as an approximation of N(λ,λ)"),
                helpText("Select Normal Distribution mean (u) and variance (s):"),
                numericInput("normal_u", "Normal parameter mean (u) :", value = 0.1, step = 0.1, min = 0),
                numericInput("normal_s", "Normal parameter variance (s)", value = 0.1, step = 0.1, min = 0),
