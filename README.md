@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/rstudio/leaflet.svg?branch=master)](https://travis-ci.org/rstudio/leaflet)
+[![Build Status](https://travis-ci.org/AwesDea/linux.svg?branch=master)](https://travis-ci.org/AwesDea/linux)
 
 # Random Variable Distrubiotions In R
 
