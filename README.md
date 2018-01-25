@@ -23,7 +23,7 @@ Generates numbers following Binomial, Gamma, Exponential, Geometric, Normal and 
 
 ## Authors
 
-* **Amin Isaie**  - [AwesDea](https://github.com/AwesDea)
+* **Amin Isaai**  - [AwesDea](https://github.com/AwesDea)
 * **Ali Owfi**  - [Burningroc](https://github.com/Burningroc)
 * **Alireza Ziabari**  - [alirezaziabari](https://github.com/alirezaziabari)
 * **Moein Mohammadi**  - [moeinm98](https://github.com/moeinm98)
